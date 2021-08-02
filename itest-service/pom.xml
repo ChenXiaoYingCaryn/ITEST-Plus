@@ -51,10 +51,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.1.17.RELEASE</version>
-                <configuration>
-                    <classifier>exec</classifier>
-                    <mainClass>com.itest.ItestManagement8002Application</mainClass>
-                </configuration>
+<!--                <configuration>-->
+<!--                    <classifier>exec</classifier>-->
+<!--                    <mainClass>com.itest.ItestManagement8002Application</mainClass>-->
+<!--                </configuration>-->
                 <executions>
                     <execution>
                         <id>repackage</id>
