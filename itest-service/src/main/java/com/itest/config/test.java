@@ -1,4 +1,4 @@
-package config;
+package com.itest.config;
 
 /**
  * @author xiaoying
