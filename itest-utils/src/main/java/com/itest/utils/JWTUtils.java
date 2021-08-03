@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class JWTUtils {
 
-    private static final String SIGN = "igame";
+    private static final String SIGN = "itest";
 
     //生成Token
     //header.payload.sign
