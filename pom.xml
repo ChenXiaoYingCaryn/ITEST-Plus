@@ -15,6 +15,10 @@
         <module>itest-consumer-8001</module>
     </modules>
 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>

@@ -42,6 +42,16 @@ public class UserController {
         return this.userService.userLogin(user);
     }
 
+    @PostMapping("/userRegister")
+    public MsgUtils register(@RequestBody User user){
+        if (user.getUserAccount() == null || user.getUserPwd() == null){
+            return MsgUtils.build(400, "用户名和密码不能为空");
+        }
+        return this.userService.userRegister(user);
+    }
+
+
+
 
 
 

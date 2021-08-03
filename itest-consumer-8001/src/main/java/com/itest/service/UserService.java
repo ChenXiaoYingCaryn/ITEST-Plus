@@ -22,4 +22,12 @@ public interface UserService {
     @PostMapping(value = "/user/userLogin")
     public MsgUtils login(@PathParam("user") User user);
 
+    /**
+     * 用户注册
+     * @param user
+     * @return
+     */
+    @PostMapping(value = "/user/userRegister")
+    MsgUtils register(@PathParam("user") User user);
+
 }

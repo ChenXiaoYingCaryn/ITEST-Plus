@@ -46,4 +46,10 @@ public class UserController {
         }
     }
 
+    @ApiOperation("用户注册")
+    @PostMapping(value = "/consumer/login/userRegister")
+    public MsgUtils register(@RequestBody User user){
+        return this.userService.register(user);
+    }
+
 }

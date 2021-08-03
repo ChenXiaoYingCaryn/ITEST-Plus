@@ -17,4 +17,11 @@ public interface UserService {
      */
     MsgUtils userLogin(User user);
 
+    /**
+     * 用户注册
+     * @param user
+     * @return
+     */
+    MsgUtils userRegister(User user);
+
 }
