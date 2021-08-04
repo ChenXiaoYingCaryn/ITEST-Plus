@@ -8,10 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +30,7 @@ public class UserController {
     RedisTemplate redisTemplate;
 
 
-    @PostMapping("/userLogin")
+    @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
     public MsgUtils login(@RequestBody User user, HttpServletRequest request, HttpServletResponse response){
 
         if (StringUtils.isBlank(user.getUserAccount()) || StringUtils.isBlank(user.getUserPwd())){
@@ -42,7 +39,7 @@ public class UserController {
         return this.userService.userLogin(user);
     }
 
-    @PostMapping("/userRegister")
+    @RequestMapping(value = "/userRegister", method = RequestMethod.POST)
     public MsgUtils register(@RequestBody User user){
         if (user.getUserAccount() == null || user.getUserPwd() == null){
             return MsgUtils.build(400, "用户名和密码不能为空");

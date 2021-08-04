@@ -8,6 +8,8 @@ spring:
     nacos:
       discovery:
         server-addr: 124.70.44.179:8848/
+  main:
+    allow-bean-definition-overriding: true
   #redis
   redis:
     host: 124.70.44.179
