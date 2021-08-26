@@ -2,6 +2,8 @@ package com.itest.controller;
 
 
 import com.itest.pojo.User;
+import com.itest.pojo.User1;
+import com.itest.sevice.User1Service;
 import com.itest.sevice.UserService;
 import com.itest.utils.MsgUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,9 @@ public class UserController {
     private UserService userService;
 
     @Autowired
+    private User1Service user1Service;
+
+    @Autowired
     RedisTemplate redisTemplate;
 
 
@@ -45,6 +50,14 @@ public class UserController {
             return MsgUtils.build(400, "用户名和密码不能为空");
         }
         return this.userService.userRegister(user);
+    }
+
+    //修改的代码
+    @RequestMapping(value = "/userUpdate", method = RequestMethod.POST)
+    public MsgUtils update(@RequestBody User user,User1 user1){
+        this.userService.userUpdate(user);
+        user1.setUserId(user.getUserId());
+        return this.user1Service.user1Upate(user1);
     }
 
 

@@ -1,10 +1,7 @@
 package com.itest.dao;
 
 import com.itest.pojo.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -40,5 +37,18 @@ public interface UserDao {
      */
     @Select("SELECT * FROM it_user WHERE user_name = #{user.userName}")
     User userIsRegister(@Param("user") User user);
+
+
+    /**
+     *修改用户 kwq
+     * @param user
+     */
+    @Update("update it_user set user_account=#{user.userAccount}," +
+            "user_pwd=#{user.userPwd},user_name=#{user.userName}," +
+            "user_sex=#{user.userSex},user_email=#{user.userEmail}," +
+            "user_image=#{user.userImage}" +
+            "where user_id = #{user.userId}")
+    int userUpate(@Param("user") User user);
+
 
 }

@@ -1,0 +1,33 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: itest-provider-9001
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 124.70.44.179:8848/
+  #redis
+  redis:
+    host: 124.70.44.179
+    port: 6379
+    password:
+    database: 1
+    jedis:
+      pool:
+        max-active: 8
+
+
+
+  datasource:
+    username: root
+    password: '1231231234'
+    url: jdbc:mysql://106.53.135.86:8066/itest?characterEncoding=UTF-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true

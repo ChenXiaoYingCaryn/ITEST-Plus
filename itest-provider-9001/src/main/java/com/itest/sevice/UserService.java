@@ -24,4 +24,12 @@ public interface UserService {
      */
     MsgUtils userRegister(User user);
 
+
+    /**
+     * 修改用户
+     * @param user
+     * @return
+     */
+    MsgUtils userUpdate(User user);
+
 }

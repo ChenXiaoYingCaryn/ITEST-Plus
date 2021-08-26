@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/ITEST-Plus.iml" filepath="$PROJECT_DIR$/.idea/ITEST-Plus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itest-consumer-8001/itest-consumer-8001.iml" filepath="$PROJECT_DIR$/itest-consumer-8001/itest-consumer-8001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itest-provider-9001/itest-provider-9001.iml" filepath="$PROJECT_DIR$/itest-provider-9001/itest-provider-9001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itest-service/itest-service.iml" filepath="$PROJECT_DIR$/itest-service/itest-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itest-utils/itest-utils.iml" filepath="$PROJECT_DIR$/itest-utils/itest-utils.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="itest-consumer-8001" />
+        <module name="itest-utils" />
+        <module name="itest-service" />
+        <module name="itest-provider-9001" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="itest-consumer-8001" target="1.8" />
+      <module name="ITEST-Plus" target="1.8" />
+      <module name="itest-provider-9001" target="8" />
+      <module name="itest-service" target="1.8" />
+      <module name="itest-utils" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="itest-consumer-8001" options="-parameters" />
+      <module name="itest-provider-9001" options="-parameters" />
+      <module name="itest-service" options="-parameters" />
+      <module name="itest-utils" options="-parameters" />
+    </option>
+  </component>
+</project>

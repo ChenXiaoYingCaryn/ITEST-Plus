@@ -3,6 +3,7 @@ package com.itest.sevice.impl;
 import com.itest.dao.RedisDao;
 import com.itest.dao.UserDao;
 import com.itest.pojo.User;
+import com.itest.pojo.User1;
 import com.itest.sevice.UserService;
 import com.itest.utils.JwtTokenUtil;
 import com.itest.utils.MsgUtils;
@@ -35,17 +36,17 @@ public class UserServiceImpl implements UserService {
             //根据用户id和密码获取用户信息
             user.setUserPwd(SecurityUtil.md5(user.getUserPwd()));
             User DBUser = this.userDao.userLogin(user);
-            if(DBUser == null){
-                return MsgUtils.build(405,"用户名或密码错误");
+            if (DBUser == null) {
+                return MsgUtils.build(405, "用户名或密码错误");
             }
             //生成token
             Map<String, String> map = new HashMap<String, String>();
-            map.put("user_id", DBUser.getUserId()+"");
+            map.put("user_id", DBUser.getUserId() + "");
             map.put("user_role", DBUser.getUserRole());
             String token = JwtTokenUtil.getToken(map);
             redisDao.put(token, String.valueOf(DBUser.getUserId()), 1000L * 60 * 60);
             return MsgUtils.build(200, "登录成功", token);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return MsgUtils.build(100, e.getMessage());
         }
@@ -53,17 +54,28 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public MsgUtils userRegister(User user) {
-        try{
+        try {
             User DBUser = this.userDao.userIsRegister(user);
-            if (DBUser != null){
-                return MsgUtils.build(201, user.getUserAccount() +" 已经被注册");
+            if (DBUser != null) {
+                return MsgUtils.build(201, user.getUserAccount() + " 已经被注册");
             }
             user.setUserPwd(SecurityUtil.md5(user.getUserPwd()));
             user.setUserRole("common");
             this.userDao.userRegister(user);
             return MsgUtils.build(200, user.getUserAccount() + ",您的账号已成功注册");
-        }catch(Exception e){
-            return MsgUtils.build(100,e.getMessage());
+        } catch (Exception e) {
+            return MsgUtils.build(100, e.getMessage());
+        }
+    }
+
+    @Override
+    public MsgUtils userUpdate(User user) {
+        try {
+           this.userDao.userUpate(user);
+            return MsgUtils.build(200, "修改成功");
+        }catch (Exception e){
+            e.printStackTrace();
+            return MsgUtils.build(100, e.getMessage());
         }
     }
 }
