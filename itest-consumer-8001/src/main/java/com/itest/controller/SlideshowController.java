@@ -1,6 +1,5 @@
 package com.itest.controller;
 
-import com.itest.pojo.User;
 import com.itest.service.SlideshowService;
 import com.itest.utils.JwtTokenUtil;
 import com.itest.utils.MsgUtils;
@@ -11,12 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.websocket.server.PathParam;
+
 
 /**
  * @author ChanV
@@ -42,9 +39,15 @@ public class SlideshowController {
         }
         if (redisTemplate.opsForValue().get(token) == null){
             return MsgUtils.build(401, "token已过期, 请重新登录");
-        }else {
-            return this.slideshowService.querySlideshow(curPage, pageSize);
         }
+        try {
+            JwtTokenUtil.verify(token);
+        }catch (Exception e){
+            e.printStackTrace();
+            return MsgUtils.build(100, "验证token失败");
+        }
+        return this.slideshowService.querySlideshow(curPage, pageSize);
+
     }
 
 }
