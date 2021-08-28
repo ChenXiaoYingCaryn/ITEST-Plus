@@ -52,10 +52,35 @@ public class UserController {
         return this.userService.userRegister(user);
     }
 
+
     //修改的代码
     @RequestMapping(value = "/userUpdate", method = RequestMethod.POST)
     public MsgUtils update(@RequestBody User user,User1 user1){
-        this.userService.userUpdate(user);
+        //查询指定的用户
+        User user2 = userService.queryUser(user.getUserId());
+        System.out.println(user2);
+        if(!user.getUserAccount().equals("string")){
+            user2.setUserAccount(user.getUserAccount());
+        }
+        if(!user.getUserEmail().equals("string")){
+            user2.setUserEmail(user.getUserEmail());
+        }
+        if(!user.getUserName().equals("string")){
+            user2.setUserName(user.getUserName());
+        }
+        if(!user.getUserImage().equals("string")){
+            user2.setUserImage(user.getUserEmail());
+        }
+        if(!user.getUserPwd().equals("string")){
+            user2.setUserPwd(user.getUserPwd());
+        }
+        if(!user.getUserRole().equals("string")){
+            user2.setUserRole(user.getUserRole());
+        }
+        if(!user.getUserSex().equals("string")){
+            user2.setUserSex(user.getUserSex());
+        }
+        this.userService.userUpdate(user2);
         user1.setUserId(user.getUserId());
         return this.user1Service.user1Upate(user1);
     }

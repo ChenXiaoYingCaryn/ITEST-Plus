@@ -32,4 +32,10 @@ public interface UserService {
      */
     MsgUtils userUpdate(User user);
 
+    /**
+     * 查询用户
+     * @param user
+     * @return
+     */
+    User queryUser(int userId);
 }

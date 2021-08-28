@@ -50,5 +50,7 @@ public interface UserDao {
             "where user_id = #{user.userId}")
     int userUpate(@Param("user") User user);
 
+@Select("SELECT * FROM it_user WHERE user_id =#{userId} ")
+   User queryUser(@Param("userId") int userId);
 
 }

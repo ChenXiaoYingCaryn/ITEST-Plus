@@ -78,4 +78,10 @@ public class UserServiceImpl implements UserService {
             return MsgUtils.build(100, e.getMessage());
         }
     }
+
+    @Override
+    public User queryUser(int userId) {
+        User user = userDao.queryUser(userId);
+        return user;
+    }
 }
